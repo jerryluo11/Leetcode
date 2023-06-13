@@ -4,19 +4,24 @@ class ListNode(object):
         self.val = val
         self.next = next
 
-class Solution(object):
-    def mergeTwoLists(self, list1, list2):
+
+class Solution:
+    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
         """
         :type list1: Optional[ListNode]
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        result = ListNode()
-
-        while list1.next != None:
-            if list1.next < list2.next:
-                result.next = list1.next
+        list3 = ListNode()
+        while list1.next != None and list2.next != None:
+            if list1.val < list2.val:
+                list3.next = list1.next
             else:
-                result.next = list2.next
-        
-        return result
+                list3.next = list2.next
+        return(list3)
+
+s = Solution()
+
+list1 = [1,2,4]
+list2 = [1,3,4] 
+print(s.mergeTwoLists(list1, list2))
